@@ -7,17 +7,17 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
 
-    def __waitForElement_to_be_visible(self,by,value):
-       return self.wait.until(EC.visibility_of_element_located((by,value)))
+    def __waitForElement_to_be_visible(self,locator):
+       return self.wait.until(EC.visibility_of_element_located(locator))
 
 
-    def _clickOn(self,by,value):
-        self.__waitForElement_to_be_visible(by,value).click()
+    def _clickOn(self,locator):
+        self.wait.until(EC.visibility_of_element_located(locator)).click()
 
-    def _write_text_on(self,by,value,text):
-        element = self.__waitForElement_to_be_visible(by,value)
+    def _write_text_on(self,locator,text):
+        element = self.__waitForElement_to_be_visible(locator)
         element.send_keys(text)
 
-    def _get_attribute(self, by,value,attribute):
-        element = self.wait.until(EC.visibility_of_element_located((by,value)))
+    def _get_attribute(self, locator,attribute):
+        element = self.wait.until(EC.visibility_of_element_located(locator))
         return element.get_dom_attribute(attribute)
