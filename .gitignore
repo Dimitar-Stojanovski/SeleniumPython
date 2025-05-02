@@ -1,0 +1,9 @@
+# Ignore all files
+
+
+
+
+# Ignore __pycache__ folders
+__pycache__/
+pages/__pycache__/
+.pytest_cache/

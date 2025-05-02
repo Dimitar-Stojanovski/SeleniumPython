@@ -21,3 +21,7 @@ class BasePage:
     def _get_attribute(self, locator,attribute):
         element = self.wait.until(EC.visibility_of_element_located(locator))
         return element.get_dom_attribute(attribute)
+    
+    def _wait_for_elements(self, locator):
+        elements = self.wait.until(EC.visibility_of_all_elements_located(locator))
+        return elements
