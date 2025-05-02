@@ -5,7 +5,10 @@ import pytest
 
 @pytest.fixture
 def browser():
-  driver = webdriver.Chrome()
+  options = webdriver.ChromeOptions()
+  options.add_argument('--headless')
+  driver = webdriver.Chrome(options=options)
+ 
   driver.maximize_window()
   yield driver
   driver.quit()
